@@ -66,8 +66,8 @@ namespace texted
                             case 0x08: i++; text += "[pause" + ROM[i] + "]"; break;
                             case 0x09: text += "[pausebutton]"; break;
                             case 0x10: i++; text += "[playsong" + int.Parse(ROM[i + 1].ToString("X2")) + (ROM[i].ToString("X2")).ToString() + "]"; i++; break;
-                            case 0x17: i++; text += "[pausesong" + ROM[i] + "]"; break;
-                            case 0x18: i++; text += "[resumesong" + ROM[i] + "]"; break;
+                            case 0x17: text += "[pausesong]"; break;
+                            case 0x18: text += "[resumesong]"; break;
                             default: text += "[hFC]"; text += HexToString(ROM[i]); break;
                         }
                         break;
@@ -78,9 +78,10 @@ namespace texted
                 i++;
             } while (ROM[i] != 0xFF || i == ROM.Length);
             offsetSize = countText(text);
+            textBox.Text = text;
+            getCounter();
             loaded = true;
             updatePreview(text);
-            textBox.Text = text;
         }
 
         private int countText(string text)
@@ -116,7 +117,14 @@ namespace texted
                 if (text[i] == '\\')
                 {
                     i++;
-                    if (text[i] == 'p' || text[i] == 'n' || text[i] == 'l') prevBox.Text += Environment.NewLine;
+                    try
+                    {
+                        if (text[i] == 'p' || text[i] == 'n' || text[i] == 'l') prevBox.Text += Environment.NewLine;
+                    }
+                    catch
+                    {
+
+                    }
                 }
                 else
                 {
@@ -211,7 +219,7 @@ namespace texted
                 case 0xAD: return ".";
                 case 0xAE: return "-";
                 case 0xAF: return "·";
-                case 0xB0: return "...";
+                case 0xB0: return "…";
                 case 0xB1: return "“";
                 case 0xB2: return "”";
                 case 0xB3: return "‘";
@@ -243,25 +251,22 @@ namespace texted
 
         private void editText(object sender, EventArgs e)
         {
-            getCounter();
+            if (loaded) getCounter();
             if (loaded) updateHex();
-            updatePreview(textBox.Text);
+            if (loaded) updatePreview(textBox.Text);
         }
 
         private void getCounter()
         {
-            if (loaded)
+            currentLenght = countText(textBox.Text);
+            counter.Text = currentLenght.ToString() + "/" + offsetSize.ToString();
+            if (currentLenght > offsetSize)
             {
-                currentLenght = countText(textBox.Text);
-                counter.Text = currentLenght.ToString() + "/" + offsetSize.ToString();
-                if (currentLenght > offsetSize)
-                {
                     counter.ForeColor = Color.Red;
-                }
-                else
-                {
+            }
+            else
+            {
                     counter.ForeColor = Color.Black;
-                }
             }
         }
 
@@ -277,6 +282,7 @@ namespace texted
                 switch (text[i])
                 {
                     case '[':
+                        try{
                         command[0] = "";
                         command[1] = "";
                         hex = "";
@@ -291,22 +297,23 @@ namespace texted
                         switch (command[0])
                         {
                             case "color":
-                                hexBox.Text += "FC 01 " + int.Parse(command[1], System.Globalization.NumberStyles.HexNumber).ToString("X2");
+                                hexBox.Text += "FC 01 " + int.Parse(command[1]).ToString("X2") + " ";
                                 break;
                             case "highlight":
-                                hexBox.Text += "FC 02 " + int.Parse(command[1], System.Globalization.NumberStyles.HexNumber).ToString("X2");
+                                hexBox.Text += "FC 02 " + int.Parse(command[1]).ToString("X2") + " ";
                                 break;
                             case "shadowcolor":
-                                hexBox.Text += "FC 03 " + int.Parse(command[1], System.Globalization.NumberStyles.HexNumber).ToString("X2");
+                                hexBox.Text += "FC 03 " + int.Parse(command[1]).ToString("X2") + " ";
                                 break;
                             case "pause":
-                                hexBox.Text += "FC 08 " + int.Parse(command[1], System.Globalization.NumberStyles.HexNumber).ToString("X2");
+                                hexBox.Text += "FC 08 " + int.Parse(command[1]).ToString("X2") + " ";
                                 break;
                             case "pausebutton":
                                 hexBox.Text += "FC 09 ";
                                 break;
                             case "playsong":
-                                hexBox.Text += "FC 10 " + int.Parse(command[1], System.Globalization.NumberStyles.HexNumber).ToString("X2");
+                                command[1] = int.Parse(command[1], System.Globalization.NumberStyles.HexNumber).ToString("X4");
+                                hexBox.Text += (((("FC 10 " + command[1][2]) + command[1][3]) + " ") + command[1][0]) + command[1][1] + " ";
                                 break;
                             case "pausesong":
                                 hexBox.Text += "FC 17 ";
@@ -339,14 +346,23 @@ namespace texted
                                 break;
                         }
                         //i++;
+                        }catch{}
                         break;
                     case '\\':
                         i++;
-                        switch (text[i])
+                        try
                         {
-                            case 'l': hexBox.Text += "FA "; break;
-                            case 'p': hexBox.Text += "FB "; break;
-                            case 'n': hexBox.Text += "FE "; break;
+                            switch (text[i])
+                            {
+                                case 'l': hexBox.Text += "FA "; break;
+                                case 'p': hexBox.Text += "FB "; break;
+                                case 'n': hexBox.Text += "FE "; break;
+                                default: break;
+                            }
+                        }
+                        catch
+                        {
+
                         }
                         break;
                     case 'ᵉ':
@@ -484,7 +500,7 @@ namespace texted
             if (insert == false)
             {
                 sel = textBox.SelectionStart;
-                textBox.Text = textBox.Text.Remove(sel, 1);
+                if(sel<textBox.Text.Length) textBox.Text = textBox.Text.Remove(sel, 1);
                 textBox.SelectionStart = sel;
             }
         }
@@ -492,7 +508,7 @@ namespace texted
         private void saveChanges(object sender, EventArgs e)
         {
             int[] newBytes = new int[currentLenght];
-            int i, j;
+            int i, j=0;
             string[] hex;
             if (currentLenght <= offsetSize)
             {
@@ -501,8 +517,9 @@ namespace texted
                 {
                     j = (int)offsetBox.Value + i;
                     ROM[j] = (byte)int.Parse(hex[i], System.Globalization.NumberStyles.HexNumber);
-                    File.WriteAllBytes(@path, ROM);
                 }
+                ROM[j + 1] = 0xFF;
+                File.WriteAllBytes(@path, ROM);
             }
             else
             {
