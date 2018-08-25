@@ -18,20 +18,26 @@ namespace texted
             InitializeComponent();
         }
 
-        byte[] ROM;
-        string path;
-        int offsetSize;
-        int currentLenght;
+        public static byte[] ROM;
+        public static string path;
+        public static string logPath;
+        public static int offsetSize;
+        public static int currentLenght;
         bool loaded = false;
         bool insert = true;
+        
+        
 
         private void loadRom(object sender, EventArgs e)
         {
             if(openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 path = openFileDialog.FileName;
+                logPath = path.Remove(path.Length - openFileDialog.SafeFileName.Length);
                 ROM = File.ReadAllBytes(@path);
                 goButton.Enabled = true;
+                saveButton.Enabled = true;
+                repointButton.Enabled = true;
                 offsetBox.Maximum = ROM.Length-1;
             }
         }
@@ -523,9 +529,48 @@ namespace texted
             }
             else
             {
-                MessageBox.Show("The text you entered is longer that the previous one. Continuing may replace important bytes.", "Saving", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                //Repoint
+                if (MessageBox.Show("The text you entered is longer that the previous one. Continuing may replace important bytes.", "Saving", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+                {
+                    hex = hexBox.Text.Split(' ');
+                    for (i = 0; i < hex.Length - 1; i++)
+                    {
+                        j = (int)offsetBox.Value + i;
+                        ROM[j] = (byte)int.Parse(hex[i], System.Globalization.NumberStyles.HexNumber);
+                    }
+                    ROM[j + 1] = 0xFF;
+                    File.WriteAllBytes(@path, ROM);
+                }
             }
         }
+
+        private void repointStart(object sender, EventArgs e)
+        {
+            data.currentOffset = (int)offsetBox.Value;
+            data.hexbox = hexBox.Text;
+            repointDialog dialog = new repointDialog();
+            dialog.ShowDialog();
+            offsetBox.Value = data.currentOffset;
+        }
     }
+
+    public static class data
+    {
+        public static int currentOffset;
+        public static int newOffset;
+        public static string hexbox;
+        public static void writeAt(string[] hex, int offset)
+        {
+            int[] newBytes = new int[Form1.currentLenght];
+            int i, j = 0;
+            hex = hexbox.Split(' ');
+            for (i = 0; i < hex.Length - 1; i++)
+            {
+                j = (int)offset + i;
+                Form1.ROM[j] = (byte)int.Parse(hex[i], System.Globalization.NumberStyles.HexNumber);
+            }
+            Form1.ROM[j + 1] = 0xFF;
+            File.WriteAllBytes(@Form1.path, Form1.ROM);
+        }
+    }
+
 }

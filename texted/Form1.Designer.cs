@@ -41,13 +41,13 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.resetButton = new System.Windows.Forms.Button();
+            this.repointButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
             this.specialCharBox = new System.Windows.Forms.ComboBox();
             this.counter = new System.Windows.Forms.Label();
-            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.insertSobButton = new System.Windows.Forms.ToolStripStatusLabel();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -235,7 +235,7 @@
             this.tableLayoutPanel1.SetColumnSpan(this.tableLayoutPanel2, 6);
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.resetButton, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.repointButton, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.saveButton, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 375);
@@ -245,18 +245,21 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(623, 34);
             this.tableLayoutPanel2.TabIndex = 7;
             // 
-            // resetButton
+            // repointButton
             // 
-            this.resetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.resetButton.Location = new System.Drawing.Point(233, 3);
-            this.resetButton.Name = "resetButton";
-            this.resetButton.Size = new System.Drawing.Size(75, 23);
-            this.resetButton.TabIndex = 0;
-            this.resetButton.Text = "Reset";
-            this.resetButton.UseVisualStyleBackColor = true;
+            this.repointButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.repointButton.Enabled = false;
+            this.repointButton.Location = new System.Drawing.Point(233, 3);
+            this.repointButton.Name = "repointButton";
+            this.repointButton.Size = new System.Drawing.Size(75, 23);
+            this.repointButton.TabIndex = 0;
+            this.repointButton.Text = "Repoint";
+            this.repointButton.UseVisualStyleBackColor = true;
+            this.repointButton.Click += new System.EventHandler(this.repointStart);
             // 
             // saveButton
             // 
+            this.saveButton.Enabled = false;
             this.saveButton.Location = new System.Drawing.Point(314, 3);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
@@ -286,10 +289,6 @@
             this.counter.Text = "0/0";
             this.counter.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
-            // openFileDialog
-            // 
-            this.openFileDialog.Filter = "GBA Rom|*.gba";
-            // 
             // statusStrip1
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.statusStrip1, 6);
@@ -309,6 +308,10 @@
             this.insertSobButton.Size = new System.Drawing.Size(25, 16);
             this.insertSobButton.Text = "INS";
             this.insertSobButton.DoubleClick += new System.EventHandler(this.toggleInsSob);
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.Filter = "GBA Rom|*.gba";
             // 
             // Form1
             // 
@@ -344,7 +347,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Button resetButton;
+        private System.Windows.Forms.Button repointButton;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.RichTextBox prevBox;
         private System.Windows.Forms.TextBox hexBox;
