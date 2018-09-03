@@ -25,6 +25,7 @@ namespace texted
         public static int currentLenght;
         bool loaded = false;
         bool insert = true;
+        bool special = false;
         
         
 
@@ -461,6 +462,7 @@ namespace texted
                 case '”': return 0xB2;
                 case '‘': return 0xB3;
                 case '’': return 0xB4;
+                case '\'': return 0xB4;
                 case '♂': return 0xB5;
                 case '♀': return 0xB6;
                 case '₽': return 0xB7;
@@ -550,6 +552,17 @@ namespace texted
             repointDialog dialog = new repointDialog();
             dialog.ShowDialog();
             offsetBox.Value = data.currentOffset;
+        }
+
+        private void specialInput(object sender, EventArgs e)
+        {
+            if (special == false)
+            {
+                special = true;
+                textBox.Text += specialCharBox.Items[specialCharBox.SelectedIndex];
+                specialCharBox.SelectedIndex = 0;
+            }
+            special = false;
         }
     }
 

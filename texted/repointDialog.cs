@@ -41,6 +41,7 @@ namespace texted
                 {
                     offset++;
                 }
+                offset++;
                 freeOffsetList.Items.Add(offset.ToString("X6"));
             }
             else
@@ -51,6 +52,7 @@ namespace texted
                 {
                     offset++;
                 }
+                offset++;
                 freeOffsetList.Items.Add(offset.ToString("X6"));
             }
         }
@@ -102,13 +104,13 @@ namespace texted
         {
             int dir = offset;
             byte[] ptr = new byte[4];
+            ptr[0] = (byte)(dir % 0x100);
+            dir /= 0x100;
             ptr[1] = (byte)(dir % 0x100);
             dir /= 0x100;
             ptr[2] = (byte)(dir % 0x100);
             dir /= 0x100;
-            ptr[3] = (byte)(dir % 0x100);
-            dir /= 0x100;
-            ptr[0] = (byte)(dir % 0x100 + 0x08);
+            ptr[3] = (byte)(dir % 0x100 + 0x08);
             return ptr;
         }
 
@@ -163,6 +165,7 @@ namespace texted
             File.WriteAllText(@Form1.logPath, log);
             File.WriteAllBytes(@Form1.path, Form1.ROM);
             MessageBox.Show(log + "A log file was created at " + Form1.logPath, "Repoint successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            log = "";
             data.currentOffset = (int)newOffsetBox.Value;
             Close();
         }
