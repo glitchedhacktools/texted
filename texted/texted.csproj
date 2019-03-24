@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="bookmarkManager.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,6 +60,12 @@
     </Compile>
     <Compile Include="repointDialog.Designer.cs">
       <DependentUpon>repointDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="searchWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="searchWindow.Designer.cs">
+      <DependentUpon>searchWindow.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -75,6 +82,9 @@
     </Compile>
     <EmbeddedResource Include="repointDialog.resx">
       <DependentUpon>repointDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="searchWindow.resx">
+      <DependentUpon>searchWindow.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

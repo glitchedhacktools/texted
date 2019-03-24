@@ -16,6 +16,9 @@ namespace texted
         public Form1()
         {
             InitializeComponent();
+            special = true;
+            specialCharBox.SelectedIndex = 0;
+            special = false;
         }
 
         public static byte[] ROM;
@@ -23,29 +26,94 @@ namespace texted
         public static string logPath;
         public static int offsetSize;
         public static int currentLenght;
+        public static string ROMID;
+        public static string ROMlang;
+        public static string searchTerm;
         bool loaded = false;
         bool insert = true;
         bool special = false;
-        
-        
+        public static Color[] ColorsEM = {
+            Color.Transparent,
+            Color.White,
+            Color.FromArgb(0xFF,0x60,0x60,0x60),
+            Color.FromArgb(0xFF,0xD0,0xD0,0xC8),
+            Color.FromArgb(0xFF,0xE8,0x08,0x08),
+            Color.FromArgb(0xFF,0xF8,0xB8,0x70),
+            Color.FromArgb(0xFF,0x20,0x98,0x08),
+            Color.FromArgb(0xFF,0x90,0xF0,0x90),
+            Color.FromArgb(0xFF,0x30,0x50,0xC8),
+            Color.FromArgb(0xFF,0xA0,0xC0,0xF0),
+            Color.White,
+            Color.FromArgb(0xFF,0xE0,0xE8,0xE0),
+            Color.White,
+            Color.FromArgb(0xFF,0x00,0xF8,0x98),
+            Color.FromArgb(0xFF,0x00,0xC8,0xB8),
+            Color.FromArgb(0xFF,0x48,0x70,0xA0)
+        };
+        public static Color[] ColorsFR= {
+            Color.Transparent,
+            Color.White,
+            Color.FromArgb(0xFF,0x60,0x60,0x60),
+            Color.FromArgb(0xFF,0xD0,0xD0,0xC8),
+            Color.FromArgb(0xFF,0xE8,0x08,0x08),
+            Color.FromArgb(0xFF,0xF8,0xB8,0x70),
+            Color.FromArgb(0xFF,0x20,0x98,0x08),
+            Color.FromArgb(0xFF,0x90,0xF0,0x90),
+            Color.FromArgb(0xFF,0x30,0x50,0xC8),
+            Color.FromArgb(0xFF,0xA0,0xC0,0xF0),
+            Color.White,
+            Color.FromArgb(0xFF,0x48,0xC8,0xE8),
+            Color.FromArgb(0xFF,0x10,0xA8,0xD8),
+            Color.FromArgb(0xFF,0x00,0x50,0x70),
+            Color.FromArgb(0xFF,0x00,0x70,0x88),
+            Color.FromArgb(0xFF,0x00,0x78,0xC0)
+        };
+        public static Color[] ColorsRS = {
+            Color.Transparent,
+            Color.FromArgb(0xFF,0x48,0x48,0x48),
+            Color.FromArgb(0xFF,0xF8,0x00,0x00),
+            Color.FromArgb(0xFF,0x00,0xF8,0x00),
+            Color.FromArgb(0xFF,0x00,0x00,0xF8),
+            Color.FromArgb(0xFF,0xF8,0xF8,0x00),
+            Color.FromArgb(0xFF,0x00,0xF8,0xF8),
+            Color.FromArgb(0xFF,0xF8,0x00,0xF8),
+            Color.FromArgb(0xFF,0xD0,0xD0,0xC8),
+            Color.Black,
+            Color.Black,
+            Color.FromArgb(0xFF,0xE0,0xE0,0xE8),
+            Color.White,
+            Color.FromArgb(0xFF,0x98,0xC8,0xF8),
+            Color.FromArgb(0xFF,0x78,0xB8,0xE0),
+            Color.White
+        };
+        public List<CSV_Import> data_CSV = new List<CSV_Import>();
+
 
         private void loadRom(object sender, EventArgs e)
         {
             if(openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 path = openFileDialog.FileName;
-                logPath = path.Remove(path.Length - openFileDialog.SafeFileName.Length);
+                logPath = path.Remove(path.Length - 4) + "_logs\\";
                 ROM = File.ReadAllBytes(@path);
                 goButton.Enabled = true;
                 saveButton.Enabled = true;
                 repointButton.Enabled = true;
                 offsetBox.Maximum = ROM.Length-1;
+                ROMID = "" + (char)ROM[0xAC] + (char)ROM[0xAD] + (char)ROM[0xAE] + "";
+                ROMlang = "" + (char)ROM[0xAF] + "";
+                if (ROMID == "AXV") prevBox.ForeColor = ColorsRS[1];
+                else prevBox.ForeColor = ColorsFR[2];
             }
         }
 
-        private void loadOffset(object sender, EventArgs e)
+        public void loadOffsetOnClick(object sender, EventArgs e)
         {
-            int offset = (int)offsetBox.Value;
+            loadOffset((int)offsetBox.Value);
+        }
+
+        public void loadOffset(int offset)
+        {
             int i = offset;
             string text = "";
             loaded = false;
@@ -78,7 +146,17 @@ namespace texted
                             default: text += "[hFC]"; text += HexToString(ROM[i]); break;
                         }
                         break;
-                    case 0xFD: i++; text += "[v" + ROM[i] + "]"; break;
+                    case 0xFD:
+                        i++;
+                        switch (ROM[i])
+                        {
+                            case 0x1: text += "[player]"; break;
+                            case 0x6: text += "[rival]"; break;
+                            default:
+                                text += "[v" + ROM[i] + "]";
+                                break;
+                        }
+                        break;
                     case 0xFE: text += "\\n"; break;
                     default: text += HexToString(ROM[i]); break;
                 }
@@ -115,10 +193,33 @@ namespace texted
             return j;
         }
 
+        private int countHex(string hex)
+        {
+            int i, j = 0;
+            for (i = 0; i < hex.Length; i++)
+            {
+                //if (hex[i] != ' ') j++;
+                j++;
+            }
+            return j / 3;
+        }
+
         private void updatePreview(string text)
         {
             prevBox.Clear();
-            int i;
+            int i, c=0;
+            List<int> colorIndex = new List<int>();
+            List <int> colorPos = new List<int>();
+            Color[] ColorsROM;
+            bool command = false;
+            string commandName = "";
+            switch (ROMID)
+            {
+                case "AXV": ColorsROM = ColorsRS; break;
+                case "BPR": ColorsROM = ColorsFR; break;
+                case "BPE": ColorsROM = ColorsEM; break;
+                default: ColorsROM = ColorsRS; break;
+            }
             for (i = 0; i < text.Length; i++)
             {
                 if (text[i] == '\\')
@@ -135,13 +236,67 @@ namespace texted
                 }
                 else
                 {
-                    prevBox.Text += text[i];
+                    if (text[i] == '[') { command = true; i++; }
+                    if (command)
+                    {
+                        if (text[i] != ']') commandName += text[i];
+                        else
+                        {
+                            if (commandName.Contains("color"))
+                            {
+                                if (commandName != "color")
+                                {
+                                    int index = int.Parse(commandName.Remove(0, 5), System.Globalization.NumberStyles.Integer);
+                                    if (index > 15)
+                                    {
+                                        index = 0;
+                                        statusBarAlerts.Text = "Warning: Color number out of range.";
+                                    }
+                                    else
+                                    {
+                                        statusBarAlerts.Text = "";
+                                    }
+                                    colorIndex.Add(index);
+                                    colorPos.Add(prevBox.Text.Length);
+                                    c++;
+                                }
+                            }
+                            else
+                            {
+                                switch (commandName)
+                                {
+                                    case "player": prevBox.Text += "*******"; break;
+                                    case "rival": prevBox.Text += "*******"; break;
+                                    case "PK": prevBox.Text += "[PK]"; break;
+                                    case "MN": prevBox.Text += "[MN]"; break;
+                                    case "PO": prevBox.Text += "[PO]"; break;
+                                    case "BL": prevBox.Text += "[KE]"; break;
+                                    case "OC": prevBox.Text += "[BL]"; break;
+                                    case "K": prevBox.Text += "[OC]"; break;
+                                    case "LV": prevBox.Text += "[K]"; break;
+                                    case "U": prevBox.Text += "▲"; break;
+                                    case "D": prevBox.Text += "▼"; break;
+                                    case "L": prevBox.Text += "◄"; break;
+                                    case "R": prevBox.Text += "►"; break;
+                                    default: prevBox.Text += "*"; break;
+                                }
+                            }
+                            command = false;
+                            commandName = "";
+                        }
+                    }
+                    else prevBox.Text += text[i];
                 }
-                
+            }
+            for (i = 0; i < c; i++)
+            {
+                prevBox.SelectionStart = colorPos[i];
+                prevBox.SelectionLength = prevBox.Text.Length-colorPos[i];
+                prevBox.SelectionColor = ColorsROM[colorIndex[i]];
             }
         }
         
-        private string HexToString(int b)
+        public static string HexToString(int b)
         {
             string result = "";
             string type = "NONE";
@@ -258,14 +413,18 @@ namespace texted
 
         private void editText(object sender, EventArgs e)
         {
-            if (loaded) getCounter();
-            if (loaded) updateHex();
-            if (loaded) updatePreview(textBox.Text);
+            if (loaded)
+            {
+                updateHex();
+                getCounter();
+                updatePreview(textBox.Text);
+            }
+            searchTerm = textBox.Text;
         }
 
         private void getCounter()
         {
-            currentLenght = countText(textBox.Text);
+            currentLenght = countHex(hexBox.Text);
             counter.Text = currentLenght.ToString() + "/" + offsetSize.ToString();
             if (currentLenght > offsetSize)
             {
@@ -388,7 +547,7 @@ namespace texted
             }
         }
 
-        private int charToHex(char c)
+        public static int charToHex(char c)
         {
             string type = "NONE";
             if (c >= 0x41 && c <= 0x5A) type = "MAYUS";
@@ -556,13 +715,39 @@ namespace texted
 
         private void specialInput(object sender, EventArgs e)
         {
-            if (special == false)
+            int cursor = textBox.SelectionStart;
+            int length = specialCharBox.Items[specialCharBox.SelectedIndex].ToString().Length;
+            if (special == false && specialCharBox.SelectedIndex > 0)
             {
                 special = true;
-                textBox.Text += specialCharBox.Items[specialCharBox.SelectedIndex];
+                textBox.Text = textBox.Text.Insert(cursor, specialCharBox.Items[specialCharBox.SelectedIndex].ToString());
                 specialCharBox.SelectedIndex = 0;
             }
+            textBox.Focus();
+            textBox.SelectionStart = cursor + length;
+            textBox.SelectionLength = 0;
             special = false;
+        }
+
+        private void openSearchWindow(object sender, EventArgs e)
+        {
+            bookmarksWindow SearchWindow = new bookmarksWindow(this);
+            SearchWindow.Show();
+        }
+
+        public void saveCsvAfterEditing(string path)
+        {
+            string result = "OFFSET;CHANGED (Y/N);REPOINTED;STRING" + Environment.NewLine;
+            char x = 'N';
+            int i, fields = data_CSV.Count;
+            for (i = 0; i < fields; i++)
+            {
+                if (data_CSV[i].Changed) x = 'Y';
+                else x = 'N';
+                result += "0x" + data_CSV[i].Offset.ToString("X6") + ";" + x + ";" + "0x" + data_CSV[i].Repoint.ToString("X6") + ";" + data_CSV[i].Text + Environment.NewLine;
+            }
+            //data_CSV = data_CSV.OrderBy(item => item.Offset).ToList();
+            File.WriteAllText(path, result, Encoding.GetEncoding(1252));
         }
     }
 
@@ -584,6 +769,7 @@ namespace texted
             Form1.ROM[j + 1] = 0xFF;
             File.WriteAllBytes(@Form1.path, Form1.ROM);
         }
+
     }
 
 }

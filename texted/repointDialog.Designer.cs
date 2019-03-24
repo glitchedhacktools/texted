@@ -29,16 +29,12 @@
         private void InitializeComponent()
         {
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.progressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.progressBar = new System.Windows.Forms.ToolStripProgressBar();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.okButton = new System.Windows.Forms.Button();
-            this.cancelButton = new System.Windows.Forms.Button();
-            this.pointerList = new System.Windows.Forms.ListBox();
+            this.freeOffsetList = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -46,18 +42,22 @@
             this.newOffsetBox = new System.Windows.Forms.NumericUpDown();
             this.searchStartBox = new System.Windows.Forms.NumericUpDown();
             this.searchOffsetButton = new System.Windows.Forms.Button();
-            this.freeOffsetList = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.pointerList = new System.Windows.Forms.ListBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.okButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.currentOffsetBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.newOffsetBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchStartBox)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -70,6 +70,14 @@
             this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // progressBar
+            // 
+            this.progressBar.MarqueeAnimationSpeed = 0;
+            this.progressBar.Maximum = 100000;
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(100, 16);
+            this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             // 
             // tableLayoutPanel1
             // 
@@ -137,66 +145,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Find space";
             // 
-            // groupBox3
+            // freeOffsetList
             // 
-            this.groupBox3.Controls.Add(this.pointerList);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(3, 233);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(278, 147);
-            this.groupBox3.TabIndex = 1;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Pointers found";
-            // 
-            // progressBar
-            // 
-            this.progressBar.MarqueeAnimationSpeed = 0;
-            this.progressBar.Maximum = 100000;
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(100, 16);
-            this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.flowLayoutPanel1.AutoSize = true;
-            this.flowLayoutPanel1.Controls.Add(this.okButton);
-            this.flowLayoutPanel1.Controls.Add(this.cancelButton);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(61, 386);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(162, 29);
-            this.flowLayoutPanel1.TabIndex = 2;
-            // 
-            // okButton
-            // 
-            this.okButton.Enabled = false;
-            this.okButton.Location = new System.Drawing.Point(3, 3);
-            this.okButton.Name = "okButton";
-            this.okButton.Size = new System.Drawing.Size(75, 23);
-            this.okButton.TabIndex = 0;
-            this.okButton.Text = "Repoint";
-            this.okButton.UseVisualStyleBackColor = true;
-            this.okButton.Click += new System.EventHandler(this.saveAndRepoint);
-            // 
-            // cancelButton
-            // 
-            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(84, 3);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 1;
-            this.cancelButton.Text = "Cancel";
-            this.cancelButton.UseVisualStyleBackColor = true;
-            // 
-            // pointerList
-            // 
-            this.pointerList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pointerList.FormattingEnabled = true;
-            this.pointerList.Location = new System.Drawing.Point(3, 16);
-            this.pointerList.Name = "pointerList";
-            this.pointerList.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.pointerList.Size = new System.Drawing.Size(272, 128);
-            this.pointerList.TabIndex = 0;
+            this.freeOffsetList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.freeOffsetList.FormattingEnabled = true;
+            this.freeOffsetList.Location = new System.Drawing.Point(3, 16);
+            this.freeOffsetList.Name = "freeOffsetList";
+            this.freeOffsetList.Size = new System.Drawing.Size(260, 96);
+            this.freeOffsetList.TabIndex = 0;
+            this.freeOffsetList.DoubleClick += new System.EventHandler(this.selectAsNewOffset);
             // 
             // label1
             // 
@@ -257,6 +214,7 @@
             this.searchStartBox.Name = "searchStartBox";
             this.searchStartBox.Size = new System.Drawing.Size(84, 20);
             this.searchStartBox.TabIndex = 6;
+            this.searchStartBox.ValueChanged += new System.EventHandler(this.checkOffsetStartChange);
             // 
             // searchOffsetButton
             // 
@@ -270,16 +228,6 @@
             this.searchOffsetButton.UseVisualStyleBackColor = true;
             this.searchOffsetButton.Click += new System.EventHandler(this.searchFreeSpace);
             // 
-            // freeOffsetList
-            // 
-            this.freeOffsetList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.freeOffsetList.FormattingEnabled = true;
-            this.freeOffsetList.Location = new System.Drawing.Point(3, 16);
-            this.freeOffsetList.Name = "freeOffsetList";
-            this.freeOffsetList.Size = new System.Drawing.Size(260, 96);
-            this.freeOffsetList.TabIndex = 0;
-            this.freeOffsetList.DoubleClick += new System.EventHandler(this.selectAsNewOffset);
-            // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -291,6 +239,60 @@
             this.button1.Text = "Scan pointers";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.scanPtr);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.pointerList);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox3.Location = new System.Drawing.Point(3, 233);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(278, 147);
+            this.groupBox3.TabIndex = 1;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Pointers found";
+            // 
+            // pointerList
+            // 
+            this.pointerList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pointerList.FormattingEnabled = true;
+            this.pointerList.Location = new System.Drawing.Point(3, 16);
+            this.pointerList.Name = "pointerList";
+            this.pointerList.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.pointerList.Size = new System.Drawing.Size(272, 128);
+            this.pointerList.TabIndex = 0;
+            this.pointerList.SelectedIndexChanged += new System.EventHandler(this.checkSelectedPtr);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.flowLayoutPanel1.AutoSize = true;
+            this.flowLayoutPanel1.Controls.Add(this.okButton);
+            this.flowLayoutPanel1.Controls.Add(this.cancelButton);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(61, 386);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(162, 29);
+            this.flowLayoutPanel1.TabIndex = 2;
+            // 
+            // okButton
+            // 
+            this.okButton.Enabled = false;
+            this.okButton.Location = new System.Drawing.Point(3, 3);
+            this.okButton.Name = "okButton";
+            this.okButton.Size = new System.Drawing.Size(75, 23);
+            this.okButton.TabIndex = 0;
+            this.okButton.Text = "Repoint";
+            this.okButton.UseVisualStyleBackColor = true;
+            this.okButton.Click += new System.EventHandler(this.saveAndRepoint);
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cancelButton.Location = new System.Drawing.Point(84, 3);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelButton.TabIndex = 1;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = true;
             // 
             // repointDialog
             // 
@@ -312,11 +314,11 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.currentOffsetBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.newOffsetBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchStartBox)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

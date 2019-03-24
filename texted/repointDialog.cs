@@ -14,6 +14,7 @@ namespace texted
     public partial class repointDialog : Form
     {
         List<int> ptrList = new List<int>();
+        bool offsetStartChanged = false;
         public repointDialog()
         {
             InitializeComponent();
@@ -31,6 +32,15 @@ namespace texted
             byte[] freespace = new byte[Form1.currentLenght + 1];
             int i;
             int offset = (int)searchStartBox.Value;
+            while (offset % 4 != 0)
+            {
+                offset++;
+            }
+            if (offsetStartChanged)
+            {
+                freeOffsetList.Items.Clear();
+                offsetStartChanged = false;
+            }
             for (i = 0; i < freespace.Length; i++)
             {
                 freespace[i] = 0xFF;
@@ -39,20 +49,24 @@ namespace texted
             {
                 while (checkFreeSpace(Form1.ROM, freespace, offset)==false)
                 {
-                    offset++;
+                    offset = offset + 4;
                 }
-                offset++;
+                //offset++;
                 freeOffsetList.Items.Add(offset.ToString("X6"));
             }
             else
             {
                 offset = int.Parse(freeOffsetList.Items[freeOffsetList.Items.Count - 1].ToString(), System.Globalization.NumberStyles.HexNumber);
                 offset += freespace.Length;
-                while (checkFreeSpace(Form1.ROM, freespace, offset) == false)
+                while (offset % 4 != 0)
                 {
                     offset++;
                 }
-                offset++;
+                while (checkFreeSpace(Form1.ROM, freespace, offset) == false)
+                {
+                    offset = offset + 4;
+                }
+                //offset++;
                 freeOffsetList.Items.Add(offset.ToString("X6"));
             }
         }
@@ -116,6 +130,7 @@ namespace texted
 
         private void scanPtr(object sender, EventArgs e)
         {
+            int i;
             pointerList.Items.Clear();
             groupBox3.Text = "Scanning pointers...";
             ptrList.Clear();
@@ -128,6 +143,10 @@ namespace texted
             }
             else
             {
+                for (i = 0; i < pointerList.Items.Count; i++)
+                {
+                    pointerList.SetSelected(i, true);
+                }
                 okButton.Enabled = true;
             }
         }
@@ -150,24 +169,54 @@ namespace texted
             data.writeAt(data.hexbox.Split(' '), (int)newOffsetBox.Value);
             //Repoint
             string log = "";
+            string filename = "";
             int i, j;
             byte[] newPtr;
             for (i = 0; i < ptrList.Count; i++)
             {
-                newPtr = getPtr((int)newOffsetBox.Value);
-                log += "Pointer at " + ptrList[i].ToString("X6") + " changed from [" + Form1.ROM[ptrList[i] + 0].ToString("X2") + " " + Form1.ROM[ptrList[i] + 1].ToString("X2") + " " + Form1.ROM[ptrList[i] + 2].ToString("X2") + " " + Form1.ROM[ptrList[i] + 3].ToString("X2") + "]" + " to [" + newPtr[0].ToString("X2") + " " + newPtr[1].ToString("X2") + " " + newPtr[2].ToString("X2") + " " + newPtr[3].ToString("X2") + "]." + Environment.NewLine;
-                for (j = 0; j < 4; j++)
+                if (pointerList.GetSelected(i))
                 {
-                    Form1.ROM[ptrList[i] + j] = newPtr[j];
+                    newPtr = getPtr((int)newOffsetBox.Value);
+                    log += "Pointer at " + ptrList[i].ToString("X6") + " changed from [" + Form1.ROM[ptrList[i] + 0].ToString("X2") + " " + Form1.ROM[ptrList[i] + 1].ToString("X2") + " " + Form1.ROM[ptrList[i] + 2].ToString("X2") + " " + Form1.ROM[ptrList[i] + 3].ToString("X2") + "]" + " to [" + newPtr[0].ToString("X2") + " " + newPtr[1].ToString("X2") + " " + newPtr[2].ToString("X2") + " " + newPtr[3].ToString("X2") + "]." + Environment.NewLine;
+                    for (j = 0; j < 4; j++)
+                    {
+                        Form1.ROM[ptrList[i] + j] = newPtr[j];
+                    }
                 }
             }
-            Form1.logPath += "log_" + data.currentOffset.ToString("X6") + ".txt";
-            File.WriteAllText(@Form1.logPath, log);
+            filename = Form1.logPath + "log_" + data.currentOffset.ToString("X6") + ".txt";
+            Directory.CreateDirectory(Form1.logPath);
+            File.WriteAllText(filename, log);
             File.WriteAllBytes(@Form1.path, Form1.ROM);
             MessageBox.Show(log + "A log file was created at " + Form1.logPath, "Repoint successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
             log = "";
             data.currentOffset = (int)newOffsetBox.Value;
             Close();
+        }
+
+        private void checkSelectedPtr(object sender, EventArgs e)
+        {
+            int i, j = 0;
+            for (i = 0; i < pointerList.Items.Count; i++)
+            {
+                if (pointerList.GetSelected(i))
+                {
+                    j++;
+                }
+            }
+            if (j == 0)
+            {
+                okButton.Enabled = false;
+            }
+            else
+            {
+                okButton.Enabled = true;
+            }
+        }
+
+        private void checkOffsetStartChange(object sender, EventArgs e)
+        {
+            offsetStartChanged = true;
         }
     }
 }
