@@ -16,6 +16,7 @@ namespace texted
         public Form1()
         {
             InitializeComponent();
+            searchButton.Enabled = false;
             special = true;
             specialCharBox.SelectedIndex = 0;
             special = false;
@@ -87,6 +88,7 @@ namespace texted
             Color.White
         };
         public List<CSV_Import> data_CSV = new List<CSV_Import>();
+        bookmarksWindow bookmarksWindow;
 
 
         private void loadRom(object sender, EventArgs e)
@@ -99,6 +101,7 @@ namespace texted
                 goButton.Enabled = true;
                 saveButton.Enabled = true;
                 repointButton.Enabled = true;
+                searchButton.Enabled = true;
                 offsetBox.Maximum = ROM.Length-1;
                 ROMID = "" + (char)ROM[0xAC] + (char)ROM[0xAD] + (char)ROM[0xAE] + "";
                 ROMlang = "" + (char)ROM[0xAF] + "";
@@ -675,7 +678,7 @@ namespace texted
         private void saveChanges(object sender, EventArgs e)
         {
             int[] newBytes = new int[currentLenght];
-            int i, j=0;
+            int i, j=0, bookmarkIndex;
             string[] hex;
             if (currentLenght <= offsetSize)
             {
@@ -686,6 +689,23 @@ namespace texted
                     ROM[j] = (byte)int.Parse(hex[i], System.Globalization.NumberStyles.HexNumber);
                 }
                 ROM[j + 1] = 0xFF;
+                try
+                {
+                    if (Properties.Settings.Default.lastBookmarkPath != "none")
+                    {
+                        bookmarkIndex = getIndexBookmarkFromOffset((int)offsetBox.Value);
+                        if (bookmarkIndex >= 0)
+                        {
+                            data_CSV[bookmarkIndex].Changed = true;
+                            data_CSV[bookmarkIndex].Text = textBox.Text;
+                        }
+                        saveCsvAfterEditing(Properties.Settings.Default.lastBookmarkPath);
+                    }
+                }
+                catch
+                {
+
+                }
                 File.WriteAllBytes(@path, ROM);
             }
             else
@@ -699,6 +719,23 @@ namespace texted
                         ROM[j] = (byte)int.Parse(hex[i], System.Globalization.NumberStyles.HexNumber);
                     }
                     ROM[j + 1] = 0xFF;
+                    try
+                    {
+                        if (Properties.Settings.Default.lastBookmarkPath != "none")
+                        {
+                            bookmarkIndex = getIndexBookmarkFromOffset((int)offsetBox.Value);
+                            if (bookmarkIndex > 0)
+                            {
+                                data_CSV[bookmarkIndex].Changed = true;
+                                data_CSV[bookmarkIndex].Text = textBox.Text;
+                            }
+                            saveCsvAfterEditing(Properties.Settings.Default.lastBookmarkPath);
+                        }
+                    }
+                    catch
+                    {
+
+                    }
                     File.WriteAllBytes(@path, ROM);
                 }
             }
@@ -708,9 +745,28 @@ namespace texted
         {
             data.currentOffset = (int)offsetBox.Value;
             data.hexbox = hexBox.Text;
+            int bookmarkIndex;
+            bookmarkIndex = getIndexBookmarkFromOffset((int)offsetBox.Value);
             repointDialog dialog = new repointDialog();
             dialog.ShowDialog();
             offsetBox.Value = data.currentOffset;
+            try
+            {
+                if (Properties.Settings.Default.lastBookmarkPath != "none")
+                {
+                    if (bookmarkIndex >= 0)
+                    {
+                        data_CSV[bookmarkIndex].Changed = true;
+                        data_CSV[bookmarkIndex].Text = textBox.Text;
+                        data_CSV[bookmarkIndex].Repoint = (int)offsetBox.Value;
+                    }
+                    saveCsvAfterEditing(Properties.Settings.Default.lastBookmarkPath);
+                }
+            }
+            catch
+            {
+
+            }
         }
 
         private void specialInput(object sender, EventArgs e)
@@ -746,8 +802,25 @@ namespace texted
                 else x = 'N';
                 result += "0x" + data_CSV[i].Offset.ToString("X6") + ";" + x + ";" + "0x" + data_CSV[i].Repoint.ToString("X6") + ";" + data_CSV[i].Text + Environment.NewLine;
             }
-            //data_CSV = data_CSV.OrderBy(item => item.Offset).ToList();
+            data_CSV = data_CSV.OrderBy(item => item.Offset).ToList();
             File.WriteAllText(path, result, Encoding.GetEncoding(1252));
+        }
+
+        public int getIndexBookmarkFromOffset(int hexOffset)
+        {
+            int index = 0;
+            while (data_CSV[index].Offset != hexOffset)
+            {
+                index++;
+                if (index >= data_CSV.Count) return -1;
+            }
+            return index;
+        }
+
+        public int getIndexBookmarkFromStringOffset(string strOffset)
+        {
+            int hexOffset = Int32.Parse(strOffset, System.Globalization.NumberStyles.HexNumber);
+            return getIndexBookmarkFromOffset(hexOffset);
         }
     }
 

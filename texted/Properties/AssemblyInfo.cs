@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // La información general de un ensamblado se controla mediante el siguiente 
 // conjunto de atributos. Cambie estos valores de atributo para modificar la información
 // asociada con un ensamblado.
-[assembly: AssemblyTitle("texted")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Glitched Text Editor")]
+[assembly: AssemblyDescription("Tool for changing in-game text")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("texted")]
-[assembly: AssemblyCopyright("Copyright ©  2018")]
+[assembly: AssemblyCompany("Glitched")]
+[assembly: AssemblyProduct("Text Editor")]
+[assembly: AssemblyCopyright("Copyright ExcmoJack ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

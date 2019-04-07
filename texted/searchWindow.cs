@@ -14,18 +14,24 @@ namespace texted
     public partial class bookmarksWindow : Form
     {
         string[] csvLines;
-        string path_CSV = "";
+        public string path_CSV = "";
         Form1 mainForm;
-
 
         public bookmarksWindow(Form1 Form1)
         {
             mainForm = Form1;
             InitializeComponent();
-            if (Properties.Settings.Default.lastBookmarkPath != "none")
+            try
             {
-                path_CSV = Properties.Settings.Default.lastBookmarkPath;
-                getDataFromPath(path_CSV);
+                if (Properties.Settings.Default.lastBookmarkPath != "none")
+                {
+                    path_CSV = Properties.Settings.Default.lastBookmarkPath;
+                    getDataFromPath(path_CSV);
+                }
+            }
+            catch
+            {
+
             }
         }
 
@@ -85,7 +91,7 @@ namespace texted
         private void sendOffsetOnClick(object sender, EventArgs e)
         {
             string bookmarkText = offsetListBox.SelectedItem.ToString();
-            int toLoad = Int32.Parse(bookmarkText.Remove(6,bookmarkText.Length-6), System.Globalization.NumberStyles.HexNumber);
+            int toLoad = Int32.Parse(bookmarkText.Remove(6, bookmarkText.Length - 6), System.Globalization.NumberStyles.HexNumber);
             mainForm.Focus();
             mainForm.loadOffset(toLoad);
             mainForm.offsetBox.Value = toLoad;
@@ -103,10 +109,61 @@ namespace texted
             single_entry.Repoint = 0;
             single_entry.Text = mainForm.textBox.Text;
             mainForm.data_CSV.Add(single_entry);
-            offsetListBox.Items.Add(offset.ToString("X6") + "\t   " + mainForm.data_CSV[mainForm.data_CSV.Count-1].Text);
+            offsetListBox.Items.Add(offset.ToString("X6") + "\t   " + mainForm.data_CSV[mainForm.data_CSV.Count - 1].Text);
             mainForm.saveCsvAfterEditing(path_CSV);
         }
 
-        
+        private void saveCsvOnClick(object sender, EventArgs e)
+        {
+            if (saveCSV.ShowDialog() == DialogResult.OK)
+            {
+                mainForm.saveCsvAfterEditing(saveCSV.FileName);
+            }
+        }
+
+        private void mergeCsvAtClick(object sender, EventArgs e)
+        {
+            string path_CSV2 = "";
+            string[] csvLines2;
+            int i, offset;
+            CSV_Import single_entry;
+
+            if (openCSV.ShowDialog() == DialogResult.OK)
+            {
+                path_CSV2 = openCSV.FileName;
+                csvLines2 = File.ReadAllLines(@path_CSV2, Encoding.GetEncoding(1252));
+                csvLines2 = csvLines2.Skip(1).ToArray();
+                offsetListBox.Items.Clear();
+                for (i = 0; i < csvLines2.Count(); i++)
+                {
+                    single_entry = new CSV_Import();
+                    offset = Int32.Parse(csvLines2[i].Split(';')[0].Remove(0, 2), System.Globalization.NumberStyles.HexNumber);
+                    single_entry.Offset = offset;
+                    if (csvLines2[i].Split(';')[1] == "Y") single_entry.Changed = true;
+                    if (csvLines2[i].Split(';')[1] == "N") single_entry.Changed = false;
+                    if (csvLines2[i].Split(';')[2] == "") single_entry.Repoint = 0;
+                    if (csvLines2[i].Split(';')[2] != "") single_entry.Repoint = Int32.Parse(csvLines2[i].Split(';')[2].Remove(0, 2), System.Globalization.NumberStyles.HexNumber);
+                    single_entry.Text = csvLines2[i].Split(';')[3];
+                    if (mainForm.getIndexBookmarkFromOffset(offset) == -1)
+                    {
+                        mainForm.data_CSV.Add(single_entry);
+                    }
+                }
+
+                for (i = 0; i < mainForm.data_CSV.Count(); i++)
+                {
+                    if (mainForm.data_CSV[i].Repoint != 0)
+                    {
+                        offset = mainForm.data_CSV[i].Repoint;
+                    }
+                    else
+                    {
+                        offset = mainForm.data_CSV[i].Offset;
+                    }
+                    offsetListBox.Items.Add(offset.ToString("X6") + "\t   " + mainForm.data_CSV[i].Text);
+                    mainForm.saveCsvAfterEditing(path_CSV);
+                }
+            }
+        }
     }
 }

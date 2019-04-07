@@ -152,11 +152,6 @@
             0,
             0});
             this.offsetBox.Name = "offsetBox";
-            this.offsetBox.Value = new decimal(new int[] {
-            2001615,
-            0,
-            0,
-            0});
             // 
             // groupBox1
             // 

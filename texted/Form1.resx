@@ -117,12 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="tableLayoutPanel3.ColumnCount" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;prevBox.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;textBox.Name" xml:space="preserve">
+    <value>textBox</value>
   </data>
   <data name="specialCharBox.Items21" xml:space="preserve">
     <value>Ó</value>
@@ -140,9 +136,6 @@
   <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 261</value>
   </data>
-  <data name="repointButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
   <data name="&gt;&gt;searchButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -153,8 +146,8 @@
   <data name="groupBox3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="&gt;&gt;offsetBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="specialCharBox.Items79" xml:space="preserve">
+    <value>?</value>
   </data>
   <data name="prevBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Courier New, 8.25pt</value>
@@ -165,14 +158,12 @@
   <data name="groupBox3.Text" xml:space="preserve">
     <value>Preview</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="statusStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
   <data name="&gt;&gt;specialCharBox.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="repointButton.Text" xml:space="preserve">
-    <value>Repoint</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
     <value>623, 108</value>
@@ -183,22 +174,19 @@
   <data name="loadButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Text</value>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="loadButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+  <data name="specialCharBox.Items59" xml:space="preserve">
+    <value>[PO]</value>
   </data>
   <data name="&gt;&gt;saveButton.Name" xml:space="preserve">
     <value>saveButton</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel3.Name" xml:space="preserve">
-    <value>tableLayoutPanel3</value>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="groupBox2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -219,6 +207,9 @@
   <data name="&gt;&gt;searchButton.Name" xml:space="preserve">
     <value>searchButton</value>
   </data>
+  <data name="specialCharBox.Items83" xml:space="preserve">
+    <value>…</value>
+  </data>
   <data name="loadButton.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
@@ -231,8 +222,8 @@
   <data name="specialCharBox.Items13" xml:space="preserve">
     <value>È</value>
   </data>
-  <data name="specialCharBox.Items3" xml:space="preserve">
-    <value>[shadowcolor1]</value>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>629, 433</value>
   </data>
   <data name="specialCharBox.Items33" xml:space="preserve">
     <value>é</value>
@@ -249,8 +240,8 @@
   <data name="prevBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
-  <data name="&gt;&gt;loadButton.Name" xml:space="preserve">
-    <value>loadButton</value>
+  <data name="specialCharBox.Items63" xml:space="preserve">
+    <value>[K]</value>
   </data>
   <data name="specialCharBox.Items93" xml:space="preserve">
     <value>/</value>
@@ -266,12 +257,6 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Glitched Text Editor</value>
-  </data>
-  <data name="specialCharBox.Items63" xml:space="preserve">
-    <value>[K]</value>
-  </data>
-  <data name="specialCharBox.Items94" xml:space="preserve">
-    <value>▶</value>
   </data>
   <data name="&gt;&gt;prevBox.Name" xml:space="preserve">
     <value>prevBox</value>
@@ -291,8 +276,8 @@
   <data name="specialCharBox.Items12" xml:space="preserve">
     <value>Ç</value>
   </data>
-  <data name="goButton.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="specialCharBox.Items26" xml:space="preserve">
+    <value>Û</value>
   </data>
   <data name="&gt;&gt;goButton.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -315,8 +300,8 @@
   <data name="specialCharBox.Items92" xml:space="preserve">
     <value>×</value>
   </data>
-  <data name="specialCharBox.Items82" xml:space="preserve">
-    <value>·</value>
+  <data name="&gt;&gt;offsetBox.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="tableLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 375</value>
@@ -324,23 +309,17 @@
   <data name="&gt;&gt;textBox.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="specialCharBox.Items87" xml:space="preserve">
-    <value>’</value>
+  <data name="offsetBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>86, 5</value>
+  </data>
+  <data name="textBox.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
     <value>groupBox1</value>
   </data>
-  <data name="specialCharBox.Items51" xml:space="preserve">
-    <value>+</value>
-  </data>
-  <data name="specialCharBox.Items5" xml:space="preserve">
-    <value>[pausebutton]</value>
-  </data>
-  <data name="tableLayoutPanel2.ColumnCount" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;statusBarAlerts.Name" xml:space="preserve">
-    <value>statusBarAlerts</value>
+  <data name="specialCharBox.Items28" xml:space="preserve">
+    <value>ß</value>
   </data>
   <data name="&gt;&gt;prevBox.Type" xml:space="preserve">
     <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -357,8 +336,8 @@
   <data name="&gt;&gt;tableLayoutPanel3.Parent" xml:space="preserve">
     <value>groupBox3</value>
   </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>160, 20</value>
+  <data name="specialCharBox.Items51" xml:space="preserve">
+    <value>+</value>
   </data>
   <data name="specialCharBox.Items41" xml:space="preserve">
     <value>ô</value>
@@ -375,8 +354,8 @@
   <data name="&gt;&gt;counter.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
   </data>
-  <data name="specialCharBox.Items17" xml:space="preserve">
-    <value>Ì</value>
+  <data name="&gt;&gt;tableLayoutPanel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;insertSobButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -384,8 +363,8 @@
   <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="&gt;&gt;statusStrip1.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
+  <data name="&gt;&gt;loadButton.Name" xml:space="preserve">
+    <value>loadButton</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -393,8 +372,8 @@
   <data name="tableLayoutPanel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="specialCharBox.Items50" xml:space="preserve">
-    <value>&amp;</value>
+  <data name="specialCharBox.Items44" xml:space="preserve">
+    <value>ú</value>
   </data>
   <data name="specialCharBox.Items10" xml:space="preserve">
     <value>Á</value>
@@ -402,11 +381,11 @@
   <data name="specialCharBox.Items30" xml:space="preserve">
     <value>á</value>
   </data>
-  <data name="specialCharBox.Items20" xml:space="preserve">
-    <value>Ò</value>
+  <data name="tableLayoutPanel3.ColumnCount" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="specialCharBox.Items50" xml:space="preserve">
+    <value>&amp;</value>
   </data>
   <data name="specialCharBox.Items40" xml:space="preserve">
     <value>ó</value>
@@ -423,15 +402,6 @@
   <data name="specialCharBox.Items80" xml:space="preserve">
     <value>.</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>HEX</value>
-  </data>
-  <data name="prevBox.ScrollBars" type="System.Windows.Forms.RichTextBoxScrollBars, System.Windows.Forms">
-    <value>ForcedVertical</value>
-  </data>
-  <data name="specialCharBox.Items2" xml:space="preserve">
-    <value>[highlight1]</value>
-  </data>
   <data name="&gt;&gt;openFileDialog.Name" xml:space="preserve">
     <value>openFileDialog</value>
   </data>
@@ -441,14 +411,17 @@
   <data name="&gt;&gt;repointButton.Name" xml:space="preserve">
     <value>repointButton</value>
   </data>
+  <data name="specialCharBox.Items1" xml:space="preserve">
+    <value>[color1]</value>
+  </data>
+  <data name="specialCharBox.Items35" xml:space="preserve">
+    <value>ë</value>
+  </data>
   <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
     <value>groupBox3</value>
   </data>
   <data name="textBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 16</value>
-  </data>
-  <data name="&gt;&gt;offsetBox.Name" xml:space="preserve">
-    <value>offsetBox</value>
   </data>
   <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>623, 34</value>
@@ -471,14 +444,11 @@
   <data name="specialCharBox.Items32" xml:space="preserve">
     <value>è</value>
   </data>
-  <data name="specialCharBox.Items96" xml:space="preserve">
-    <value>Ä</value>
+  <data name="specialCharBox.Items87" xml:space="preserve">
+    <value>’</value>
   </data>
-  <data name="tableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="&gt;&gt;hexBox.Name" xml:space="preserve">
-    <value>hexBox</value>
+  <data name="&gt;&gt;goButton.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
   </data>
   <data name="hexBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 16</value>
@@ -486,11 +456,14 @@
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Form1</value>
   </data>
-  <data name="&gt;&gt;hexBox.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="tableLayoutPanel2.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;offsetBox.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="specialCharBox.Items20" xml:space="preserve">
+    <value>Ò</value>
+  </data>
+  <data name="offsetBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -507,8 +480,8 @@
   <data name="tableLayoutPanel3.RowCount" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="specialCharBox.Items26" xml:space="preserve">
-    <value>Û</value>
+  <data name="&gt;&gt;tableLayoutPanel3.Name" xml:space="preserve">
+    <value>tableLayoutPanel3</value>
   </data>
   <data name="specialCharBox.Items56" xml:space="preserve">
     <value>¡</value>
@@ -522,23 +495,17 @@
   <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
     <value>groupBox2</value>
   </data>
-  <data name="specialCharBox.Items81" xml:space="preserve">
-    <value>-</value>
+  <data name="specialCharBox.Items96" xml:space="preserve">
+    <value>Ä</value>
   </data>
   <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
   </data>
-  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
-    <value>panel1</value>
+  <data name="specialCharBox.Items24" xml:space="preserve">
+    <value>Ù</value>
   </data>
-  <data name="repointButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>233, 3</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;statusStrip1.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
   </data>
   <data name="saveButton.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -561,8 +528,8 @@
   <data name="specialCharBox.Items15" xml:space="preserve">
     <value>Ê</value>
   </data>
-  <data name="specialCharBox.Items35" xml:space="preserve">
-    <value>ë</value>
+  <data name="&gt;&gt;prevBox.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="specialCharBox.Items25" xml:space="preserve">
     <value>Ú</value>
@@ -579,8 +546,8 @@
   <data name="specialCharBox.Items65" xml:space="preserve">
     <value>%</value>
   </data>
-  <data name="specialCharBox.Items95" xml:space="preserve">
-    <value>:</value>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>160, 20</value>
   </data>
   <data name="specialCharBox.Items85" xml:space="preserve">
     <value>”</value>
@@ -591,11 +558,17 @@
   <data name="hexBox.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="specialCharBox.Items52" xml:space="preserve">
+    <value>[LV]</value>
+  </data>
   <data name="&gt;&gt;textBox.Parent" xml:space="preserve">
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;saveButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="specialCharBox.Items68" xml:space="preserve">
+    <value>â</value>
   </data>
   <data name="insertSobButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>25, 16</value>
@@ -621,8 +594,8 @@
   <data name="specialCharBox.Items54" xml:space="preserve">
     <value>▯</value>
   </data>
-  <data name="specialCharBox.Items44" xml:space="preserve">
-    <value>ú</value>
+  <data name="&gt;&gt;hexBox.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="specialCharBox.Items74" xml:space="preserve">
     <value>ᵉ</value>
@@ -630,8 +603,8 @@
   <data name="specialCharBox.Items64" xml:space="preserve">
     <value>Í</value>
   </data>
-  <data name="tableLayoutPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="specialCharBox.Items94" xml:space="preserve">
+    <value>▶</value>
   </data>
   <data name="specialCharBox.Items84" xml:space="preserve">
     <value>“</value>
@@ -660,8 +633,11 @@
   <data name="tableLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
     <value>617, 89</value>
   </data>
-  <data name="tableLayoutPanel2.AutoScroll" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="statusBarAlerts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 16</value>
+  </data>
+  <data name="repointButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>233, 3</value>
   </data>
   <data name="counter.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -671,6 +647,12 @@
   </data>
   <data name="openFileDialog.Filter" xml:space="preserve">
     <value>GBA Rom|*.gba</value>
+  </data>
+  <data name="specialCharBox.Items81" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="&gt;&gt;insertSobButton.Name" xml:space="preserve">
+    <value>insertSobButton</value>
   </data>
   <data name="insertSobButton.Text" xml:space="preserve">
     <value>INS</value>
@@ -705,11 +687,11 @@
   <data name="&gt;&gt;repointButton.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="searchButton.Text" xml:space="preserve">
+    <value>Bookmarks</value>
   </data>
-  <data name="specialCharBox.Items83" xml:space="preserve">
-    <value>…</value>
+  <data name="tableLayoutPanel2.ColumnCount" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
   <data name="specialCharBox.Items45" xml:space="preserve">
     <value>û</value>
@@ -720,20 +702,23 @@
   <data name="specialCharBox.Items77" xml:space="preserve">
     <value>ʳᵉ</value>
   </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
   <data name="&gt;&gt;statusBarAlerts.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="prevBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 10</value>
   </data>
   <data name="repointButton.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="specialCharBox.Items88" xml:space="preserve">
-    <value>♂</value>
-  </data>
   <data name="specialCharBox.Items46" xml:space="preserve">
     <value>ñ</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="loadButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
   </data>
   <data name="hexBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>617, 89</value>
@@ -759,17 +744,20 @@
   <data name="panel1.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Center</value>
   </data>
+  <data name="repointButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="specialCharBox.Items4" xml:space="preserve">
+    <value>[pause1]</value>
+  </data>
   <data name="&gt;&gt;loadButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>623, 108</value>
+  <data name="tableLayoutPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="tableLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
   </data>
   <data name="specialCharBox.Items69" xml:space="preserve">
     <value>í</value>
@@ -795,8 +783,8 @@
   <data name="specialCharBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 5, 3, 3</value>
   </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>296, 48</value>
+  <data name="tableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
   <data name="specialCharBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>198, 5</value>
@@ -810,8 +798,14 @@
   <data name="specialCharBox.Items53" xml:space="preserve">
     <value>=</value>
   </data>
+  <data name="saveButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>314, 3</value>
+  </data>
   <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
+  </data>
+  <data name="specialCharBox.Items95" xml:space="preserve">
+    <value>:</value>
   </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 147</value>
@@ -822,8 +816,8 @@
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>
-  <data name="textBox.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;offsetBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;counter.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -834,23 +828,20 @@
   <data name="specialCharBox.Items19" xml:space="preserve">
     <value>Ï</value>
   </data>
-  <data name="counter.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="statusStrip1.Text" xml:space="preserve">
-    <value>statusStrip1</value>
+  <data name="&gt;&gt;statusBarAlerts.Name" xml:space="preserve">
+    <value>statusBarAlerts</value>
   </data>
   <data name="specialCharBox.Items29" xml:space="preserve">
     <value>à</value>
   </data>
-  <data name="specialCharBox.Items59" xml:space="preserve">
-    <value>[PO]</value>
+  <data name="counter.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="specialCharBox.Items49" xml:space="preserve">
-    <value>ᵉʳ</value>
+  <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
   </data>
-  <data name="specialCharBox.Items79" xml:space="preserve">
-    <value>?</value>
+  <data name="specialCharBox.Items17" xml:space="preserve">
+    <value>Ì</value>
   </data>
   <data name="searchButton.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -861,14 +852,14 @@
   <data name="specialCharBox.Items89" xml:space="preserve">
     <value>♀</value>
   </data>
-  <data name="&gt;&gt;insertSobButton.Name" xml:space="preserve">
-    <value>insertSobButton</value>
+  <data name="&gt;&gt;hexBox.Name" xml:space="preserve">
+    <value>hexBox</value>
   </data>
   <data name="specialCharBox.Items55" xml:space="preserve">
     <value>¿</value>
   </data>
-  <data name="tableLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 16</value>
+  <data name="specialCharBox.Items49" xml:space="preserve">
+    <value>ᵉʳ</value>
   </data>
   <data name="searchButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -888,8 +879,8 @@
   <data name="offsetBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 20</value>
   </data>
-  <data name="specialCharBox.Items52" xml:space="preserve">
-    <value>[LV]</value>
+  <data name="tableLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
   </data>
   <data name="offsetBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 5, 3, 3</value>
@@ -897,11 +888,14 @@
   <data name="specialCharBox.Items18" xml:space="preserve">
     <value>Î</value>
   </data>
+  <data name="specialCharBox.Items82" xml:space="preserve">
+    <value>·</value>
+  </data>
   <data name="specialCharBox.Items38" xml:space="preserve">
     <value>ï</value>
   </data>
-  <data name="specialCharBox.Items28" xml:space="preserve">
-    <value>ß</value>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
   </data>
   <data name="specialCharBox.Items58" xml:space="preserve">
     <value>[MN]</value>
@@ -909,20 +903,20 @@
   <data name="specialCharBox.Items48" xml:space="preserve">
     <value>ª</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>629, 433</value>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Text</value>
   </data>
-  <data name="specialCharBox.Items68" xml:space="preserve">
-    <value>â</value>
+  <data name="prevBox.ScrollBars" type="System.Windows.Forms.RichTextBoxScrollBars, System.Windows.Forms">
+    <value>ForcedVertical</value>
   </data>
-  <data name="searchButton.Text" xml:space="preserve">
-    <value>Bookmarks</value>
+  <data name="specialCharBox.Items98" xml:space="preserve">
+    <value>Ü</value>
   </data>
-  <data name="offsetBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>86, 5</value>
+  <data name="specialCharBox.Items88" xml:space="preserve">
+    <value>♂</value>
   </data>
-  <data name="&gt;&gt;textBox.Name" xml:space="preserve">
-    <value>textBox</value>
+  <data name="textBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>617, 89</value>
   </data>
   <data name="&gt;&gt;statusStrip1.Type" xml:space="preserve">
     <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -930,17 +924,17 @@
   <data name="&gt;&gt;repointButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="prevBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 10</value>
+  <data name="repointButton.Text" xml:space="preserve">
+    <value>Repoint</value>
   </data>
   <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
   <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
+  </data>
+  <data name="statusStrip1.Text" xml:space="preserve">
+    <value>statusStrip1</value>
   </data>
   <data name="prevBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -960,8 +954,8 @@
   <data name="goButton.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="statusBarAlerts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 16</value>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>HEX</value>
   </data>
   <data name="specialCharBox.Items78" xml:space="preserve">
     <value>!</value>
@@ -969,11 +963,14 @@
   <data name="specialCharBox.Items36" xml:space="preserve">
     <value>ì</value>
   </data>
-  <data name="&gt;&gt;goButton.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>296, 48</value>
   </data>
-  <data name="saveButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>314, 3</value>
+  <data name="&gt;&gt;tableLayoutPanel3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>623, 108</value>
   </data>
   <data name="goButton.Text" xml:space="preserve">
     <value>Go</value>
@@ -981,32 +978,35 @@
   <data name="saveButton.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="specialCharBox.Items1" xml:space="preserve">
-    <value>[color1]</value>
+  <data name="specialCharBox.Items6" xml:space="preserve">
+    <value>[playsong01]</value>
+  </data>
+  <data name="&gt;&gt;offsetBox.Name" xml:space="preserve">
+    <value>offsetBox</value>
   </data>
   <data name="hexBox.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="specialCharBox.Items98" xml:space="preserve">
-    <value>Ü</value>
+  <data name="specialCharBox.Items3" xml:space="preserve">
+    <value>[shadowcolor1]</value>
   </data>
-  <data name="textBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>617, 89</value>
+  <data name="specialCharBox.Items2" xml:space="preserve">
+    <value>[highlight1]</value>
   </data>
-  <data name="specialCharBox.Items24" xml:space="preserve">
-    <value>Ù</value>
+  <data name="specialCharBox.Items5" xml:space="preserve">
+    <value>[pausebutton]</value>
   </data>
-  <data name="specialCharBox.Items4" xml:space="preserve">
-    <value>[pause1]</value>
+  <data name="goButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="specialCharBox.Items7" xml:space="preserve">
     <value>[pausesong]</value>
   </data>
-  <data name="specialCharBox.Items6" xml:space="preserve">
-    <value>[playsong01]</value>
+  <data name="tableLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 16</value>
   </data>
-  <data name="offsetBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="specialCharBox.Items8" xml:space="preserve">
     <value>[resumesong]</value>

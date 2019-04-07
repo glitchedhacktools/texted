@@ -32,10 +32,11 @@
             this.offsetListBox = new System.Windows.Forms.ListBox();
             this.importButton = new System.Windows.Forms.Button();
             this.addCsvToBookmarksButton = new System.Windows.Forms.Button();
+            this.saveAsCsvButton = new System.Windows.Forms.Button();
             this.addOffsetButton = new System.Windows.Forms.Button();
             this.loadOffsetButton = new System.Windows.Forms.Button();
             this.openCSV = new System.Windows.Forms.OpenFileDialog();
-            this.saveAsCsvButton = new System.Windows.Forms.Button();
+            this.saveCSV = new System.Windows.Forms.SaveFileDialog();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,7 +52,7 @@
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(324, 441);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(384, 441);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // offsetListBox
@@ -60,7 +61,7 @@
             this.offsetListBox.HorizontalScrollbar = true;
             this.offsetListBox.Location = new System.Drawing.Point(3, 3);
             this.offsetListBox.Name = "offsetListBox";
-            this.offsetListBox.Size = new System.Drawing.Size(318, 290);
+            this.offsetListBox.Size = new System.Drawing.Size(378, 290);
             this.offsetListBox.Sorted = true;
             this.offsetListBox.TabIndex = 0;
             // 
@@ -69,7 +70,7 @@
             this.importButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.importButton.Location = new System.Drawing.Point(3, 299);
             this.importButton.Name = "importButton";
-            this.importButton.Size = new System.Drawing.Size(318, 23);
+            this.importButton.Size = new System.Drawing.Size(378, 23);
             this.importButton.TabIndex = 1;
             this.importButton.Text = "Import bookmark file";
             this.importButton.UseVisualStyleBackColor = true;
@@ -81,10 +82,22 @@
             this.addCsvToBookmarksButton.Enabled = false;
             this.addCsvToBookmarksButton.Location = new System.Drawing.Point(3, 328);
             this.addCsvToBookmarksButton.Name = "addCsvToBookmarksButton";
-            this.addCsvToBookmarksButton.Size = new System.Drawing.Size(318, 23);
+            this.addCsvToBookmarksButton.Size = new System.Drawing.Size(378, 23);
             this.addCsvToBookmarksButton.TabIndex = 4;
             this.addCsvToBookmarksButton.Text = "Merge from bookmark file";
             this.addCsvToBookmarksButton.UseVisualStyleBackColor = true;
+            this.addCsvToBookmarksButton.Click += new System.EventHandler(this.mergeCsvAtClick);
+            // 
+            // saveAsCsvButton
+            // 
+            this.saveAsCsvButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.saveAsCsvButton.Location = new System.Drawing.Point(3, 357);
+            this.saveAsCsvButton.Name = "saveAsCsvButton";
+            this.saveAsCsvButton.Size = new System.Drawing.Size(378, 23);
+            this.saveAsCsvButton.TabIndex = 5;
+            this.saveAsCsvButton.Text = "Save bookmark file as...";
+            this.saveAsCsvButton.UseVisualStyleBackColor = true;
+            this.saveAsCsvButton.Click += new System.EventHandler(this.saveCsvOnClick);
             // 
             // addOffsetButton
             // 
@@ -92,7 +105,7 @@
             this.addOffsetButton.Enabled = false;
             this.addOffsetButton.Location = new System.Drawing.Point(3, 386);
             this.addOffsetButton.Name = "addOffsetButton";
-            this.addOffsetButton.Size = new System.Drawing.Size(318, 23);
+            this.addOffsetButton.Size = new System.Drawing.Size(378, 23);
             this.addOffsetButton.TabIndex = 3;
             this.addOffsetButton.Text = "Add this offset";
             this.addOffsetButton.UseVisualStyleBackColor = true;
@@ -104,7 +117,7 @@
             this.loadOffsetButton.Enabled = false;
             this.loadOffsetButton.Location = new System.Drawing.Point(3, 415);
             this.loadOffsetButton.Name = "loadOffsetButton";
-            this.loadOffsetButton.Size = new System.Drawing.Size(318, 23);
+            this.loadOffsetButton.Size = new System.Drawing.Size(378, 23);
             this.loadOffsetButton.TabIndex = 2;
             this.loadOffsetButton.Text = "Load offset";
             this.loadOffsetButton.UseVisualStyleBackColor = true;
@@ -113,22 +126,19 @@
             // openCSV
             // 
             this.openCSV.Filter = "CSV files|*.csv";
+            this.openCSV.Title = "Open bookmark file";
             // 
-            // saveAsCsvButton
+            // saveCSV
             // 
-            this.saveAsCsvButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.saveAsCsvButton.Location = new System.Drawing.Point(3, 357);
-            this.saveAsCsvButton.Name = "saveAsCsvButton";
-            this.saveAsCsvButton.Size = new System.Drawing.Size(318, 23);
-            this.saveAsCsvButton.TabIndex = 5;
-            this.saveAsCsvButton.Text = "Save bookmark file as...";
-            this.saveAsCsvButton.UseVisualStyleBackColor = true;
+            this.saveCSV.Filter = "CSV file|*.csv";
+            this.saveCSV.RestoreDirectory = true;
+            this.saveCSV.Title = "Save as...";
             // 
             // bookmarksWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(324, 441);
+            this.ClientSize = new System.Drawing.Size(384, 441);
             this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
@@ -154,5 +164,6 @@
         private System.Windows.Forms.Button addOffsetButton;
         private System.Windows.Forms.Button addCsvToBookmarksButton;
         private System.Windows.Forms.Button saveAsCsvButton;
+        private System.Windows.Forms.SaveFileDialog saveCSV;
     }
 }
