@@ -1,0 +1,1 @@
+# Glitched Text Editor
